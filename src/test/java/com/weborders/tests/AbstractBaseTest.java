@@ -17,7 +17,7 @@ import java.io.IOException;
 
 public class AbstractBaseTest {
 
-    protected WebDriver driver = Driver.getDriver();
+    protected WebDriver driver;
 
     protected static ExtentReports extentReports;
     protected static ExtentHtmlReporter extentHtmlReporter;
@@ -46,6 +46,7 @@ public class AbstractBaseTest {
 
     @BeforeMethod
     public void setup(){
+        driver = Driver.getDriver();
         driver.get(ConfigurationReader.getProperty("url"));
         driver.manage().window().maximize();
 
