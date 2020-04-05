@@ -17,7 +17,7 @@ public class AbstractBasePage {
     protected WebDriver driver = Driver.getDriver();
     protected WebDriverWait wait = new WebDriverWait(driver, 20);
 
-    @FindBy(tagName = "h1");
+    @FindBy(tagName = "h1")
     protected WebElement pageLogo;
 
     public String getPageLogoText(){
@@ -28,6 +28,10 @@ public class AbstractBasePage {
         PageFactory.initElements(Driver.getDriver(), this);
     }
 
+    /**
+     * Specify component name as a parameter, like: View all products or Orders
+     * @param component
+     */
     public void navigateTo(String component){
         String locator = "//a[text()='"+component+"']";
         wait.until(ExpectedConditions.presenceOfElementLocated(By.xpath(locator))).click();
